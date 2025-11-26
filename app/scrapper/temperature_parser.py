@@ -1,12 +1,26 @@
-#extrai temperatura 
-
 from bs4 import BeautifulSoup
 import re
 from typing import Optional
 
 
 class TemperatureParser:
+    """Classe responsável por extrair (parse) a informação de temperatura de um HTML."""
+
     def parse(self, html: str) -> Optional[str]:
+        """
+        Analisa o conteúdo HTML para encontrar e extrair a temperatura.
+
+        Tenta encontrar a temperatura usando seletores CSS específicos e, se falhar,
+        usa um seletor de fallback mais genérico. Após encontrar o texto da
+        temperatura, extrai apenas os dígitos.
+
+        Args:
+            html (str): O conteúdo HTML da página como uma string.
+
+        Returns:
+            Optional[str]: A temperatura como uma string de dígitos (ex: "25"),
+                           ou None se a temperatura não for encontrada no HTML.
+        """
         soup = BeautifulSoup(html, "html.parser")
 
         temperature_text = None

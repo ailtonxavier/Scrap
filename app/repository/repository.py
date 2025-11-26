@@ -1,7 +1,8 @@
-"""Repository package entrypoint.
+"""
+Ponto de entrada para o pacote de repositórios.
 
-Expose repository implementations from this module so callers can import
-`from repository import WeatherRepository`.
+Este módulo expõe as implementações de repositório para que os chamadores
+possam importar diretamente do pacote, como em `from repository import WeatherRepository`.
 """
 
 from .weather import WeatherRepository

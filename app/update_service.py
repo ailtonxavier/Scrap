@@ -6,11 +6,36 @@ from scrapper.temperature_parser import TemperatureParser
 
 
 class WeatherUpdateService:
+    """
+    Serviço de orquestração para atualização da temperatura das cidades.
+
+    Esta classe coordena o processo de buscar a temperatura de uma lista de
+    cidades usando um scraper e, em seguida, salvar essa informação em um
+    repositório.
+    """
+
     def __init__(self, repository: WeatherRepository):
+        """
+        Inicializa o serviço de atualização.
+
+        Args:
+            repository (WeatherRepository): A instância do repositório onde os dados
+                                           de temperatura serão salvos.
+        """
         self.repository = repository
         self.scraper = TemperatureService(HtmlFetcher(), TemperatureParser())
 
     def update_cities(self, cities: List[dict]):
+        """
+        Busca e salva a temperatura para uma lista de cidades.
+
+        Itera sobre a lista de cidades, busca a temperatura atual de cada uma
+        na web e a salva no repositório.
+
+        Args:
+            cities (List[dict]): Uma lista de dicionários, onde cada dicionário
+                                 contém o nome e a URL da cidade.
+        """
         print("-" * 20)
         for city in cities:
             city_name = city["nome"]

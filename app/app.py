@@ -9,6 +9,13 @@ from repository.weather import WeatherRepository
 
 
 def main():
+    """
+    Função principal que orquestra a execução do aplicativo.
+
+    Inicializa todos os serviços necessários, carrega a lista de cidades e
+    inicia um loop infinito para buscar e atualizar as temperaturas em
+    intervalos de tempo definidos. O loop pode ser interrompido com Ctrl+C.
+    """
     loader = CityLoader()
     repo = WeatherRepository()
     updater = WeatherUpdateService(repo)
