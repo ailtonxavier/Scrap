@@ -2,20 +2,25 @@
 
 class RedisClient:
     """
-    (Não utilizado) Cliente para interagir com o Redis.
+    Cliente para interagir com o Redis.
 
-    Esta classe parece ter a intenção de atuar como um wrapper para a
-    instância do cliente Redis, mas não é usada no fluxo principal da aplicação.
+    Esta classe atua como um wrapper para a instância do cliente Redis,
+    abstraindo a forma como a conexão é obtida.
     """
 
     def __init__(self):
         """
-        (Não utilizado) Inicializa o cliente Redis.
+        Inicializa o RedisClient.
 
-        A função `get_redis()` não está definida, o que torna esta classe não funcional.
+        Obtém a instância da conexão do Redis através da função `get_redis()`.
         """
         self._client = get_redis()
 
     def client(self):
-        """(Não utilizado) Retorna a instância do cliente Redis."""
+        """
+        Retorna a instância do cliente Redis gerenciada.
+
+        Returns:
+            Redis: A instância do cliente para interagir com o Redis.
+        """
         return self._client
